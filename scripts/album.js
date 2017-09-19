@@ -36,11 +36,11 @@ var albumPicasso = {
         year: '1500',
         albumArtUrl: 'assets/images/img4.jpg',
         songs: [
-            { title: 'Painting', duration: '4:26' },
-            { title: 'Printmaking', duration: '3:14' },
-            { title: 'Woodcuts', duration: '5:01' },
-            { title: 'Nuremberg', duration: '3:21'},
-            { title: 'Agnes Frey', duration: '2:15'}
+            { title: 'Painting', duration: '4:50' },
+            { title: 'Printmaking', duration: '6:14' },
+            { title: 'Woodcuts', duration: '3:01' },
+            { title: 'Nuremberg', duration: '3:61'},
+            { title: 'Agnes Frey', duration: '2:35'}
         ]
     };
 var createSongRow = function(songNumber, songName, songLength) {
@@ -55,13 +55,16 @@ var createSongRow = function(songNumber, songName, songLength) {
      return template;
  };
 
- var setCurrentAlbum = function(album) {
-      // #1
-      var albumTitle = document.getElementsByClassName('album-view-title')[0];
-      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-      var albumImage = document.getElementsByClassName('album-cover-art')[0];
-      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+
+
+ var albumTitle = document.getElementsByClassName('album-view-title')[0];
+ var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+ var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+ var albumImage = document.getElementsByClassName('album-cover-art')[0];
+ var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+var setCurrentAlbum = function(album) {
 
       // #2
       albumTitle.firstChild.nodeValue = album.title;
@@ -80,4 +83,13 @@ var createSongRow = function(songNumber, songName, songLength) {
 
   window.onload = function() {
       setCurrentAlbum(albumPicasso);
+var albums = [albumPicasso, albumMarconi, albumDurer];
+var index =1;
+      albumImage.addEventListener("click",function(event){
+        setCurrentAlbum(album);
+        index++;
+        if (index ==albums.length){
+          index=0;
+        }
+      });
   };
