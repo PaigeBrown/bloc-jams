@@ -24,4 +24,4 @@ $(window).load = function() {
              animatePoints();
      }
    });
-});
+};
