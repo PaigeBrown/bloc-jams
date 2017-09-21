@@ -55,11 +55,6 @@ var createSongRow = function(songNumber, songName, songLength) {
      return $(template);
  };
 
-
-
-
- 
-
 var setCurrentAlbum = function(album) {
 
   var $albumTitle = $('.album-view-title');
