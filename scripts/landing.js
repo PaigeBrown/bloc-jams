@@ -6,17 +6,19 @@
           transform: 'scaleX(1) translateY(0)'
       });
     };
-     $.each($('.point'), revealPoint);
-   };
+    $.each($('.point'), revealPoint);
+};
 
 var animatePoints = function(points) {
     forEach(points, revealPoint);
-   };
+};
+
 $(window).load = function() {
   if ($(window).height() > 950) {
-        animatePoints();
-     }
+      animatePoints(points);
+  }
    var scrollDistance = $('.selling-points').offset().top - $(window).height() + 200;
+
    $(window).scroll(function(event) {
      if ($(window).scrollTop() >= scrollDistance) {
              animatePoints();

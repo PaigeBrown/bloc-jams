@@ -52,7 +52,7 @@ var createSongRow = function(songNumber, songName, songLength) {
       + '</tr>'
       ;
 
-     return template;
+     return $(template);
  };
 
 
@@ -66,15 +66,20 @@ var createSongRow = function(songNumber, songName, songLength) {
 
 var setCurrentAlbum = function(album) {
 
-      albumTitle.firstChild.nodeValue = album.title;
-      albumArtist.firstChild.nodeValue = album.artist;
-      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
-      albumImage.setAttribute('src', album.albumArtUrl);
+  var $albumTitle = $('.album-view-title');
+  var $albumArtist = $('.album-view-artist');
+  var $albumReleaseInfo = $('.album-view-release-info');
+  var $albumImage = $('.album-cover-art');
+  var $albumSongList = $('.album-view-song-list');
+  $albumTitle.text(album.title);
+  $albumArtist.text(album.artist);
+  $albumReleaseInfo.text(album.year + ' ' + album.label);
+  $albumImage.attr('src', album.albumArtUrl);
+  $albumSongList.empty();
 
-      albumSongList.innerHTML = '';
-
-      for (var i = 0; i < album.songs.length; i++) {
-          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
+    for (var i = 0; i < album.songs.length; i++) {
+      var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
+      $albumSongList.append($newRow);
       }
   };
 
@@ -85,7 +90,7 @@ var findParentByClassName = function(element, targetClass) {
               if(currentParent != currentParent.parentElement);
                 console.log("No parent found with that class name");
               };
-        }else if (currentParent != element.parentElement){
+        } else if (currentParent != element.parentElement){
           console.log("No parent found");
         }
 
