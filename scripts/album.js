@@ -168,19 +168,19 @@ var currentVolume = 80;
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
 
-// var updatePlayerBarSong = function() {
-//   if (setSong !== songNumber) {
-//            $(this).html(pauseButtonTemplate);
-//            setSong = songNumber;
-//            setSong = currentAlbum.songs[songNumber - 1];
-//            updatePlayerBarSong();
-//   } else if (setSong === songNumber) {
-//            $(this).html(playButtonTemplate);
-//            $('.main-controls .play-pause').html(playerBarPlayButton);
-//            setSong = null;
-//            setSong = null;
-//    }
-// };
+var updatePlayerBarSong = function() {
+  if (setSong !== songNumber) {
+           $(this).html(pauseButtonTemplate);
+           setSong = songNumber;
+           setSong = currentAlbum.songs[songNumber - 1];
+           updatePlayerBarSong();
+  } else if (setSong === songNumber) {
+           $(this).html(playButtonTemplate);
+           $('.main-controls .play-pause').html(playerBarPlayButton);
+           setSong = null;
+           setSong = null;
+   }
+};
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
