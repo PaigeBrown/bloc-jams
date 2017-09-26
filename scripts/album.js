@@ -43,6 +43,7 @@ var albumPicasso = {
             { title: 'Agnes Frey', duration: '2:35'}
         ]
     };
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
         '<tr class="album-view-song-item">'
@@ -52,7 +53,7 @@ var createSongRow = function(songNumber, songName, songLength) {
       + '</tr>'
       ;
 
-     var $row =$(template);
+     var $row = $(template);
 
      var clickHandler = function() {
        var songItem = $(this).attr('data-song-number');
@@ -68,10 +69,7 @@ var createSongRow = function(songNumber, songName, songLength) {
                $(this).html(playButtonTemplate);
                currentlyPlayingSong = null;
        }
-      };
     };
-
-
 
      var onHover = function(event) {
          var songNumberCell = $(this).find('.song-item-number');
@@ -90,10 +88,11 @@ var createSongRow = function(songNumber, songName, songLength) {
          }
      };
 
-     $row.find('song-item-number').click(clickHandler);
+
+     $row.find('.song-item-number').click(clickHandler);
      $row.hover(onHover, offHover);
      return $row;
- };
+};
 
 var setCurrentAlbum = function(album) {
 
@@ -111,18 +110,18 @@ var setCurrentAlbum = function(album) {
     for (var i = 0; i < album.songs.length; i++) {
       var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
       $albumSongList.append($newRow);
-      }
-  };
+    }
+};
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
- var currentlyPlayingSong = null;
+var currentlyPlayingSong = null;
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
     var albums = [albumPicasso, albumMarconi, albumDurer];
     var index =1;
-    albumImage.addEventListener("click",function(event){
+    $('.album-cover-art').click(function(event){
       setCurrentAlbum(albums[index]);
       index++;
       if (index ==albums.length){

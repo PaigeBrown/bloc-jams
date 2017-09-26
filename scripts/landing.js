@@ -1,19 +1,17 @@
- var animatePoints = function() {
-   var revealPoint = function() {
-      // #7
-      $(this).css({
+   var revealPoints = function(points) {
+
+      points.css({
           opacity: 1,
           transform: 'scaleX(1) translateY(0)'
       });
     };
-    $.each($('.point'), revealPoint);
-};
+    // $.each($('.point'), revealPoint);
 
-var animatePoints = function(points) {
-    forEach(points, revealPoint);
-};
+// var animatePoints = function(points) {
+    // forEach($('.selling-points'), revealPoint);
+// };
 
-$(window).load = (function() {
+$(window).on('load', function () {
   if ($(window).height() > 950) {
       animatePoints(points);
   }
@@ -21,7 +19,11 @@ $(window).load = (function() {
 
    $(window).scroll(function(event) {
      if ($(window).scrollTop() >= scrollDistance) {
-             animatePoints();
+       revealPoints($('.point'));
      }
    });
-});
+ });
+
+// ctrl y redo
+// ctrl { } move left/right
+// ctrl ? comment
