@@ -106,6 +106,7 @@ var updateSeekBarWhileSongPlays = function() {
          });
      }
  };
+
 var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     var offsetXPercent = seekBarFillRatio * 100;
     // #1
@@ -189,8 +190,8 @@ var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
 
          updateSeekPercentage($seekBar, seekBarFillRatio);
      });
-
-
+});
+};
 
 var trackIndex = function(album, song) {
     // album.song
